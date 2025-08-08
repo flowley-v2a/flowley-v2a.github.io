@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flowley: Video-to-Audio Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/ai-technology.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Precise Video-to-Audio Generation with Cross-Modal Alignment in Latent Space</h1>
+        <!-- Authors -->
+           
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"> Anonymous Authors</span>
+
+            <!-- <span class="author-block">
+              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+            </span> -->
+          </div>
+
+        <!-- Affiliation -->
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Washington,</span>
+            <span class="author-block"><sup>2</sup>Google Research</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1y7sOFJ5Q5xfj5ltZyOQPAwJHyQkHbxqz/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- toppage video -->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero teaser" style="margin-top: -40px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      
+      <div class="column is-three-quarters">
+        <h3 class="has-text-centered" style="font-size: 1.2rem;">
+          <b>TL;DR:</b> We introduce <strong>Flowley</strong>, a novel flow-based multimodal framework capable of generating visually aligned audio through single-stage training, without relying on any pretrained audio-visual alignment modules.
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small" style="margin-top: 10px;">
+  <div class="hero-body" style="padding-top: 1rem; padding-bottom: 0.5rem;">
+    <div class="container" style="text-align:center">
+      <p style="margin-bottom: 10px; font-size: 11pt;">
+        Click on each video to <strong>unmute or mute</strong> its generated audio.
+      </p>
+      <center>
+        <div id="results-carousel" class="carousel results-carousel">
+
+          <div id="otter-wind">
+            <p class="video-title">Text input: Wave crashes against rocky shoreline with loud splashing and foamy sounds.</p>
+            <div class="item">
+              <video id="video-otter-wind"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/moviegen_sea_330.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div id="car-police">
+            <p class="video-title">Text input: Airplane flyby.</p>
+            <div class="item">
+              <video id="video-car-police"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/h1QxsOmXVCE_000187.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="toilet-flush">
+            <p class="video-title">Text input: Train wheels squealing.</p>
+            <div class="item">
+              <video id="video-toilet-flush"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/jJ6FWcy7B6M_000052.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="race-car">
+            <p class="video-title">Text input: The skateboard wheels scraping and grinding on the ground.</p>
+            <div class="item">
+              <video id="video-race-car"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/moviegen_skateboard_485.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="bass-beat">
+            <p class="video-title">Text input: Typing on typewriter.</p>
+            <div class="item">
+              <video id="video-bass-beat"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/M0Iwz8p-3XU_000030.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="flute-guitar">
+            <p class="video-title">Text input: Swimmer's heavy breathing and grunting with each stroke.</p>
+            <div class="item">
+              <video id="video-flute-guitar"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/moviegen_swimmer_59.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="police-car">
+            <p class="video-title">Text input: Playing badminton.</p>
+            <div class="item">
+              <video id="video-police-car"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/mi7kgfvwTAw_000005.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="rooster-crow">
+            <p class="video-title">Text input: People sobbing.</p>
+            <div class="item">
+              <video id="video-rooster-crow"  autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/oLYZ4FyktN0_000040.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="fire-sheep">
+            <p class="video-title">Text input: Gentle water splashing and trickling over mossy rocks.</p>
+            <div class="item">
+              <video id="video-fire-sheep" autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/moviegen_stream_331.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div id="flute-guitar-1">
+            <p class="video-title">Text input: Air horn.</p>
+            <div class="item">
+              <video id="video-flute-guitar-1" autoplay loop muted playsinline onclick="toggleMute(this)">
+                <source src="./static/videos/quick_demo/rjued58Yqpc_000109.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+        </div>
+      </center>
+      
+    </div>
+  </div>
+</section>  
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-10">
+        <h2 class="title is-3">What's Foley?</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/WFVLWo5B81w?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-10">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+            Video-to-audio (V2A) generation aims to synthesize realistic audio that is both semantically consistent with and temporally synchronized to a silent video. Despite recent progress, many methods still rely on multi-stage training, resulting in high computational costs and long runtimes, or transform visual input into text to leverage pretrained text-to-audio models, sacrificing fine-grained temporal cues. To overcome these limitations, we propose Flowley, an end-to-end, single-stage training architecture that produces soundtracks by combining visual features with textual prompts. Crucially, Flowley embeds cross-modal alignment directly within its attention mechanism, introducing zero additional computational cost compared to standard attention layers. We further observe that existing V2A benchmarks lack sound-oriented descriptive prompts, which can potentially degrade the semantic coherence of the synthesized audio. To remedy this, we propose SoundCap, a plug-and-play pipeline for creating detailed, sound-aware captions that guide the model. Remarkably, without integrating any pretrained visual-audio alignment modules, Flowley surpasses state-of-the-art performance on VGGSound across multiple metrics. Our demo, code, and pretrained models are available on the project website.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Methodology. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-10">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <div class="has-text-centered" style="margin: 2rem 0;">
+            <img src="./static/images/Architecture-AllinOne.png" 
+                 alt="Flowley methodology overview" 
+                 style="max-width: 100%; height: auto;"/>
+            <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem;">
+              Figure 1: <b>(a)</b> The proposed Flowley framework consists of two core modules. <b>(b)</b> First, visual, textual, and audio latent representations are processed together through the multi-stream block. <b>(c)</b> Latent features are then passed into the single-stream block, where they undergo weighted cross-attention with the visual and textual streams to estimate the flow field. At inference time, we integrate this learned flow using standard ODE solvers to generate the compressed mel-spectrogram, which is subsequently decoded and vocoded into the final audio waveform.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Methodology. -->
+
+  </div>
+</section>
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a> -->
+      <a class="icon-link" href="https://drive.google.com/file/d/1y7sOFJ5Q5xfj5ltZyOQPAwJHyQkHbxqz/view?usp=sharing" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This template is adapted from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
