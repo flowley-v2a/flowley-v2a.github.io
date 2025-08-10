@@ -319,6 +319,43 @@
   </div>
 </section>  
 
+
+<script>
+  function toggleMute(clickedVideo) {
+    // Get all video elements
+    const allVideos = document.querySelectorAll('video');
+
+    // Loop through all videos and mute them, except for the clicked video
+    allVideos.forEach(video => {
+      if (video !== clickedVideo) {
+        video.muted = true;  // Mute other videos
+      }
+    });
+
+    // Toggle mute on the clicked video
+    clickedVideo.muted = !clickedVideo.muted;
+    
+    console.log(clickedVideo.muted ? 'Muted' : 'Unmuted');
+  }
+</script> 
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var options = {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 5000,
+      centerMode: true,
+      pagination: false,
+    };
+
+    var carousels = bulmaCarousel.attach('#results-carousel', options);
+  });
+</script>  
+
 <section class="section">
   <div class="container is-max-desktop">
 
