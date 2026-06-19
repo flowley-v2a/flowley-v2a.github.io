@@ -92,40 +92,40 @@
         <!-- Authors -->
            
           <div class="is-size-5 publication-authors">
-            <span class="author-block"> Anonymous Authors</span>
+            <!-- <span class="author-block"> Anonymous Authors</span> -->
 
-            <!-- <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="https://thanhtvt.github.io">Thanh V. T. Tran</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+              <a href="https://nngocson2002.github.io">Ngoc-Son Nguyen</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://khanhluong34.github.io/">Luong Tran</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
+              <a href="https://scholar.google.com/citations?user=gkOAR-gAAAAJ&hl=en">Long-Khanh Pham</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
+              <a href="https://paarthneekhara.github.io/">Paarth Neekhara</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
+              <a href="https://shehzeen.github.io/">Shehzeen Hussain</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span> -->
+              <a href="https://www.linkedin.com/in/vannguyen8/">Van Nguyen</a><sup>1</sup>
+            </span>
           </div>
 
         <!-- Affiliation -->
-          <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
-          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>FPT Software AI Center, Vietnam</span>
+            <span class="author-block"><sup>2</sup>NVIDIA Corporation, USA</span>
+          </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
-              <!-- <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+              <span class="link-block">
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -133,8 +133,8 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+              <!-- <span class="link-block">
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -143,25 +143,25 @@
                 </a>
               </span> -->
               <!-- Video Link. -->
-              <!-- <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+              <span class="link-block">
+                <a href="https://youtu.be/E3tZ7W1givY"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
                   </span>
                   <span>Video</span>
                 </a>
-              </span> -->
+              </span>
               <!-- Code Link. -->
-              <!-- <span class="link-block">
-                <a href="https://drive.google.com/file/d/1y7sOFJ5Q5xfj5ltZyOQPAwJHyQkHbxqz/view?usp=sharing"
+              <span class="link-block">
+                <a href="https://github.com/FSoft-AIC/Flowley"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
                   </a>
-              </span> -->
+              </span>
               <!-- Dataset Link. -->
               <!-- <span class="link-block">
                 <a href="https://github.com/google/nerfies/releases/tag/0.1"
@@ -376,7 +376,7 @@
       <div class="column is-10">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-            Video-to-audio (V2A) generation aims to synthesize realistic audio that is both semantically consistent with and temporally synchronized to a silent video. Despite recent progress, many methods still rely on multi-stage training, resulting in high computational costs and long runtimes, or transform visual input into text to leverage pretrained text-to-audio models, sacrificing fine-grained temporal cues. To overcome these limitations, we propose Flowley, an end-to-end, single-stage training architecture that produces soundtracks by combining visual features with textual prompts. Crucially, Flowley embeds cross-modal alignment directly within its attention mechanism, introducing zero additional computational cost compared to standard attention layers. We further observe that existing V2A benchmarks lack sound-oriented descriptive prompts, which can potentially degrade the semantic coherence of the synthesized audio. To remedy this, we propose SoundCap, a plug-and-play pipeline for creating detailed, sound-aware captions that guide the model. Remarkably, without integrating any pretrained visual-audio alignment modules, Flowley surpasses state-of-the-art performance on VGGSound across multiple metrics. Our demo, code, and pretrained models are available on the project website.
+            Video-to-audio (V2A) generation aims to synthesize realistic audio that is both semantically consistent with and temporally synchronized to a silent video. Despite recent progress, many methods still rely on multi-stage training, resulting in high computational costs and long runtimes, or transform visual input into text to leverage pretrained text-to-audio models, sacrificing fine-grained temporal cues. To overcome these limitations, we propose Flowley, an end-to-end, single-stage training architecture that produces soundtracks by combining visual features with textual prompts. Crucially, we introduce Progressive Soft-masked Cross-Attention, which embeds audio-visual synchronization directly within its attention mechanism, adding zero additional computational cost compared to standard attention layers. We further observe that existing V2A benchmarks lack sound-oriented descriptive captions, which can potentially degrade the quality of the synthesized audio. To remedy this, we propose SoundCap, a plug-and-play pipeline for creating detailed, sound-aware captions that guide the model. Remarkably, without integrating any pretrained audio-visual alignment modules, Flowley achieves state-of-the-art performance on VGGSound across multiple metrics. Moreover, by incorporating SoundCap, we further exceed the performance of the strongest existing close-sourced methods in terms of audio quality in the zero-shot setting.
         </div>
       </div>
     </div>
@@ -385,7 +385,7 @@
     <!-- Methodology. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-10">
-        <h2 class="title is-3">Methodology</h2>
+        <h2 class="title is-3">Flowley Architecture</h2>
         <div class="content has-text-justified">
           <div class="has-text-centered" style="margin: 2rem 0;">
             <img src="./static/images/Architecture-AllinOne.png" 
