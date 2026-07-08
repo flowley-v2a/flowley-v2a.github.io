@@ -393,6 +393,30 @@
             </div>
             <!--/ Methodology. -->
 
+            <!-- PSCA Module. -->
+            <div class="columns is-centered has-text-centered" style="margin-top: 2.5rem;">
+                <div class="column is-10">
+                    <h3 class="title is-4">Progressive Soft-masked Cross-Attention (PSCA)</h3>
+                    <div class="content has-text-justified">
+                        <p>
+                            To achieve precise audio-visual synchronization without relying on external pretrained modules or incurring additional computational costs, Flowley introduces the <strong>Progressive Soft-masked Cross-Attention (PSCA)</strong> module.
+                            Standard cross-attention mechanisms allow audio tokens to attend to any video frame, which can lead to temporal misalignment when audio segments mistakenly attend to unrelated, distant visual frames.
+                            PSCA resolves this by applying a dynamic, differentiable soft mask that restricts the attention window on a frame-wise basis.
+                        </p>
+                        <div class="has-text-centered" style="margin: 2rem 0;">
+                            <img src="./static/images/psca-overview.png" alt="PSCA Module Overview" style="max-width: 100%; height: auto;" />
+                            <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem;">
+                                Figure 2: Dynamic attention masking in the PSCA module. As network depth increases, the soft attention window progressively shrinks from a wide context window in early blocks to a narrow, hard window in later blocks.
+                            </p>
+                        </div>
+                        <p>
+                            Empirically, this coarse-to-fine alignment strategy significantly improves temporal synchronization (Alignment Accuracy) while preserving overall semantic consistency and high audio quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ PSCA Module. -->
+
         </div>
     </section>
 
